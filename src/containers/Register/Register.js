@@ -34,7 +34,7 @@ export class Register extends Component {
     const {onRouteChange, loadUser} = this.props;
     const {registerName,registerPassword,registerEmail}=this.state;
     const password = bcryptjs.hashSync(registerPassword, 8);
-    fetch("http://localhost:3000/register",{
+    fetch("https://young-plains-79015.herokuapp.com/register",{
       method: "post",
       headers:{"Content-Type": "application/json"},
       body: JSON.stringify({
@@ -45,9 +45,13 @@ export class Register extends Component {
     })
     .then(res=> res.json())
     .then((res)=>{
-      if(res.status){
+      if(!(res.status === "nope")){
+
         loadUser(res.user);
         onRouteChange("home");
+      }
+      else{
+        console.log(res.status)
       }
     })
   }

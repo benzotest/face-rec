@@ -28,7 +28,7 @@ class App extends Component{
   }
 
   componentDidMount(){
-    fetch("http://localhost:3000/")
+    fetch("https://young-plains-79015.herokuapp.com/")
     .then(res => res.json())
     .then((res) => {
       console.log(res)
@@ -58,7 +58,7 @@ class App extends Component{
     console.log("click")
     this.setState({imageUrl: this.state.input})
     if(this.state.imageUrl.length > 0){
-      fetch("http://localhost:3000/image", {
+      fetch("https://young-plains-79015.herokuapp.com/image", {
         method: "put",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
